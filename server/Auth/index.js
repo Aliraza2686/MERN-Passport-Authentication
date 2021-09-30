@@ -8,7 +8,9 @@ passport.serializeUser(function (email, done) {
 
 //Deserialize user with passport using hes/her email
 passport.deserializeUser(function (email, done) {
-  done(null, email);
+  User.findOne({email}, (err, user) => {
+     done(null, user)
+  })
 });
 
 //Requiring Login - Register strategy files
